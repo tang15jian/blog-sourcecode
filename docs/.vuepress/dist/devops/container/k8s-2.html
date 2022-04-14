@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>搭建Kubenetes | Tang&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/TB5.PNG">
+    <meta name="description" content="This is a blog.">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.5ceb092e.css" as="style"><link rel="preload" href="/blog/assets/js/app.cafd4473.js" as="script"><link rel="preload" href="/blog/assets/js/2.65bdda9c.js" as="script"><link rel="preload" href="/blog/assets/js/3.60f79537.js" as="script"><link rel="preload" href="/blog/assets/js/32.080d7dcd.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1c938e06.js"><link rel="prefetch" href="/blog/assets/js/11.7fb9f69d.js"><link rel="prefetch" href="/blog/assets/js/12.000fdb90.js"><link rel="prefetch" href="/blog/assets/js/13.d6b3912f.js"><link rel="prefetch" href="/blog/assets/js/14.bd0b677f.js"><link rel="prefetch" href="/blog/assets/js/15.bb62a25a.js"><link rel="prefetch" href="/blog/assets/js/16.fcab652a.js"><link rel="prefetch" href="/blog/assets/js/17.eb6777e7.js"><link rel="prefetch" href="/blog/assets/js/18.bd110a69.js"><link rel="prefetch" href="/blog/assets/js/19.f28a07eb.js"><link rel="prefetch" href="/blog/assets/js/20.73fb64f8.js"><link rel="prefetch" href="/blog/assets/js/21.21912a29.js"><link rel="prefetch" href="/blog/assets/js/22.66e1cd10.js"><link rel="prefetch" href="/blog/assets/js/23.169109be.js"><link rel="prefetch" href="/blog/assets/js/24.85fd3173.js"><link rel="prefetch" href="/blog/assets/js/25.abde29b9.js"><link rel="prefetch" href="/blog/assets/js/26.5adf5500.js"><link rel="prefetch" href="/blog/assets/js/27.a352b9b3.js"><link rel="prefetch" href="/blog/assets/js/28.890e1562.js"><link rel="prefetch" href="/blog/assets/js/29.098a45da.js"><link rel="prefetch" href="/blog/assets/js/30.6c4e80d8.js"><link rel="prefetch" href="/blog/assets/js/31.aba9f35a.js"><link rel="prefetch" href="/blog/assets/js/33.1cd96a20.js"><link rel="prefetch" href="/blog/assets/js/34.63d11f6c.js"><link rel="prefetch" href="/blog/assets/js/35.8b717c8c.js"><link rel="prefetch" href="/blog/assets/js/36.841dbd72.js"><link rel="prefetch" href="/blog/assets/js/37.31ada565.js"><link rel="prefetch" href="/blog/assets/js/38.e47f8a58.js"><link rel="prefetch" href="/blog/assets/js/39.bb4277b2.js"><link rel="prefetch" href="/blog/assets/js/4.980c0595.js"><link rel="prefetch" href="/blog/assets/js/40.009fa03c.js"><link rel="prefetch" href="/blog/assets/js/41.86ad0634.js"><link rel="prefetch" href="/blog/assets/js/42.459ea465.js"><link rel="prefetch" href="/blog/assets/js/43.ff8f6e4e.js"><link rel="prefetch" href="/blog/assets/js/44.2c8a87ea.js"><link rel="prefetch" href="/blog/assets/js/45.5d600a49.js"><link rel="prefetch" href="/blog/assets/js/46.5233525e.js"><link rel="prefetch" href="/blog/assets/js/47.6a9c0ca5.js"><link rel="prefetch" href="/blog/assets/js/48.6bca95a8.js"><link rel="prefetch" href="/blog/assets/js/49.0f282ebb.js"><link rel="prefetch" href="/blog/assets/js/5.0148824f.js"><link rel="prefetch" href="/blog/assets/js/50.d2afb1ca.js"><link rel="prefetch" href="/blog/assets/js/51.405967a9.js"><link rel="prefetch" href="/blog/assets/js/52.40bb6fb5.js"><link rel="prefetch" href="/blog/assets/js/53.e490feff.js"><link rel="prefetch" href="/blog/assets/js/54.1fe08786.js"><link rel="prefetch" href="/blog/assets/js/55.d1373695.js"><link rel="prefetch" href="/blog/assets/js/56.ea8f8384.js"><link rel="prefetch" href="/blog/assets/js/57.074ef80b.js"><link rel="prefetch" href="/blog/assets/js/58.159d5501.js"><link rel="prefetch" href="/blog/assets/js/59.c8364bd0.js"><link rel="prefetch" href="/blog/assets/js/6.564c6372.js"><link rel="prefetch" href="/blog/assets/js/60.f48bfafe.js"><link rel="prefetch" href="/blog/assets/js/61.56b23889.js"><link rel="prefetch" href="/blog/assets/js/62.44c453b9.js"><link rel="prefetch" href="/blog/assets/js/63.1378301b.js"><link rel="prefetch" href="/blog/assets/js/64.c3ef3a0c.js"><link rel="prefetch" href="/blog/assets/js/7.0a3d92c5.js"><link rel="prefetch" href="/blog/assets/js/8.483e8ba5.js"><link rel="prefetch" href="/blog/assets/js/9.7b4ce1b1.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.5ceb092e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/TB5.PNG" alt="Tang's Blog" class="logo"> <span class="site-name can-hide">Tang's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术笔记" class="dropdown-title"><span class="title">技术笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术笔记" class="mobile-dropdown-title"><span class="title">技术笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/blog/frontend/" class="nav-link">
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/db/" class="nav-link">
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/microservice/" class="nav-link">
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/blog/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/bigdata/" class="nav-link">
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/devops/" class="nav-link router-link-active">
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/blog/newlanguage/" class="nav-link">
+  新语言
+</a></li><li class="dropdown-item"><!----> <a href="/blog/othertool/" class="nav-link">
+  其他工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/readbook/" class="nav-link">
+  读书分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/guitar/" class="nav-link">
+  吉他谱
+</a></li><li class="dropdown-item"><!----> <a href="/blog/food/" class="nav-link">
+  饮食
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术笔记" class="dropdown-title"><span class="title">技术笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术笔记" class="mobile-dropdown-title"><span class="title">技术笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/java/" class="nav-link">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/blog/frontend/" class="nav-link">
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/db/" class="nav-link">
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/microservice/" class="nav-link">
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/blog/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/bigdata/" class="nav-link">
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/devops/" class="nav-link router-link-active">
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/blog/newlanguage/" class="nav-link">
+  新语言
+</a></li><li class="dropdown-item"><!----> <a href="/blog/othertool/" class="nav-link">
+  其他工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/readbook/" class="nav-link">
+  读书分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/guitar/" class="nav-link">
+  吉他谱
+</a></li><li class="dropdown-item"><!----> <a href="/blog/food/" class="nav-link">
+  饮食
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>代码仓库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CI(持续集成)</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>容器</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Docker</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Kubenetes</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/devops/container/k8s-1.html" class="sidebar-link">Kubenetes简介</a></li><li><a href="/blog/devops/container/k8s-2.html" aria-current="page" class="active sidebar-link">搭建Kubenetes</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/devops/container/k8s-2.html#kubeadm方式搭建k8s集群" class="sidebar-link">Kubeadm方式搭建K8S集群</a></li><li class="sidebar-sub-header"><a href="/blog/devops/container/k8s-2.html#准备环境" class="sidebar-link">准备环境</a></li><li class="sidebar-sub-header"><a href="/blog/devops/container/k8s-2.html#安装docker-kubeadm-kubelet" class="sidebar-link">安装Docker/kubeadm/kubelet</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/devops/container/k8s-2.html#安装docker" class="sidebar-link">安装Docker</a></li><li class="sidebar-sub-header"><a href="/blog/devops/container/k8s-2.html#添加kubernetes软件源" class="sidebar-link">添加kubernetes软件源</a></li><li class="sidebar-sub-header"><a href="/blog/devops/container/k8s-2.html#安装kubeadm-kubelet和kubectl" class="sidebar-link">安装kubeadm，kubelet和kubectl</a></li></ul></li><li class="sidebar-sub-header"><a href="/blog/devops/container/k8s-2.html#部署kubernetes-master【master节点】" class="sidebar-link">部署Kubernetes Master【master节点】</a></li></ul></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>日志分析</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>监控</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="搭建kubenetes"><a href="#搭建kubenetes" class="header-anchor">#</a> 搭建Kubenetes</h1> <h2 id="kubeadm方式搭建k8s集群"><a href="#kubeadm方式搭建k8s集群" class="header-anchor">#</a> Kubeadm方式搭建K8S集群</h2> <p>使用kubeadm方式搭建K8s集群主要分为以下几步</p> <ul><li>准备三台虚拟机，同时安装操作系统CentOS 7.x</li> <li>对三个安装之后的操作系统进行初始化操作</li> <li>在三个节点安装 docker kubelet kubeadm kubectl</li> <li>在master节点执行kubeadm init命令初始化</li> <li>在node节点上执行 kubeadm join命令，把node节点添加到当前集群</li> <li>配置CNI网络插件，用于节点之间的连通【失败了可以多试几次】</li> <li>通过拉取一个nginx进行测试，能否进行外网测试</li></ul> <h2 id="准备环境"><a href="#准备环境" class="header-anchor">#</a> 准备环境</h2> <table><thead><tr><th>角色</th> <th>IP</th></tr></thead> <tbody><tr><td>master</td> <td>192.168.1.103</td></tr> <tr><td>node1</td> <td>192.168.1.231</td></tr> <tr><td>node2</td> <td>192.168.1.109</td></tr></tbody></table> <p>然后开始在每台机器上执行下面的命令</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 关闭防火墙</span>
+systemctl stop firewalld
+systemctl disable firewalld
+
+<span class="token comment"># 关闭selinux</span>
+<span class="token comment"># 永久关闭</span>
+<span class="token function">sed</span> -i <span class="token string">'s/enforcing/disabled/'</span> /etc/selinux/config  
+<span class="token comment"># 临时关闭</span>
+setenforce <span class="token number">0</span>  
+
+<span class="token comment"># 关闭swap</span>
+<span class="token comment"># 临时</span>
+swapoff -a 
+<span class="token comment"># 永久关闭</span>
+<span class="token function">sed</span> -ri <span class="token string">'s/.*swap.*/#&amp;/'</span> /etc/fstab
+
+<span class="token comment"># 根据规划设置主机名【master节点上操作】</span>
+hostnamectl set-hostname k8smaster
+<span class="token comment"># 根据规划设置主机名【node1节点操作】</span>
+hostnamectl set-hostname k8snode1
+<span class="token comment"># 根据规划设置主机名【node2节点操作】</span>
+hostnamectl set-hostname k8snode2
+
+<span class="token comment"># 在master添加hosts (仅在master，其余全为全部)</span>
+<span class="token function">cat</span> <span class="token operator">&gt;&gt;</span> /etc/hosts <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+192.168.1.103 k8smaster
+192.168.1.231 k8snode1
+192.168.1.109 k8snode2
+EOF</span>
+
+
+<span class="token comment"># 将桥接的IPv4流量传递到iptables的链</span>
+<span class="token function">cat</span> <span class="token operator">&gt;</span> /etc/sysctl.d/k8s.conf <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF</span>
+<span class="token comment"># 生效</span>
+sysctl --system  
+
+<span class="token comment"># 时间同步</span>
+yum <span class="token function">install</span> ntpdate -y
+ntpdate time.windows.com
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><h2 id="安装docker-kubeadm-kubelet"><a href="#安装docker-kubeadm-kubelet" class="header-anchor">#</a> 安装Docker/kubeadm/kubelet</h2> <p>所有节点安装Docker/kubeadm/kubelet ，Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker</p> <h3 id="安装docker"><a href="#安装docker" class="header-anchor">#</a> 安装Docker</h3> <p>首先配置一下Docker的阿里yum源</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">cat</span> <span class="token operator">&gt;</span>/etc/yum.repos.d/docker.repo<span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[docker-ce-edge]
+name=Docker CE Edge - \<span class="token variable">$basearch</span>
+baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/\<span class="token variable">$basearch</span>/edge
+enabled=1
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/docker-ce/linux/centos/gpg
+EOF</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>然后yum方式安装docker</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># yum安装</span>
+yum -y <span class="token function">install</span> docker-ce-18.06.1.ce-3.el7
+
+<span class="token comment"># 查看docker版本</span>
+docker --version  
+
+<span class="token comment"># 启动docker</span>
+systemctl <span class="token builtin class-name">enable</span> docker
+systemctl start docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>配置docker的镜像源</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">cat</span> <span class="token operator">&gt;&gt;</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+{
+  &quot;registry-mirrors&quot;: [&quot;https://b9pmyelo.mirror.aliyuncs.com&quot;]
+}
+EOF</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>然后重启docker</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>systemctl restart docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="添加kubernetes软件源"><a href="#添加kubernetes软件源" class="header-anchor">#</a> 添加kubernetes软件源</h3> <p>配置一下yum的k8s软件源</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">cat</span> <span class="token operator">&gt;</span> /etc/yum.repos.d/kubernetes.repo <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="安装kubeadm-kubelet和kubectl"><a href="#安装kubeadm-kubelet和kubectl" class="header-anchor">#</a> 安装kubeadm，kubelet和kubectl</h3> <p>由于版本更新频繁，指定版本号部署：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 安装kubelet、kubeadm、kubectl，同时指定版本</span>
+yum <span class="token function">install</span> -y kubelet-1.18.0 kubeadm-1.18.0 kubectl-1.18.0
+<span class="token comment"># 设置开机启动</span>
+systemctl <span class="token builtin class-name">enable</span> kubelet
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="部署kubernetes-master【master节点】"><a href="#部署kubernetes-master【master节点】" class="header-anchor">#</a> 部署Kubernetes Master【master节点】</h2> <p>在  192.168.1.103  执行，也就是master节点
+由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubeadm init --apiserver-advertise-address<span class="token operator">=</span><span class="token number">192.168</span>.1.103 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.18.0 --service-cidr<span class="token operator">=</span><span class="token number">10.96</span>.0.0/12  --pod-network-cidr<span class="token operator">=</span><span class="token number">10.244</span>.0.0/16
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>安装成功
+<img src="/blog/devops/k8s/k8s1.jpg" alt="k8s1"></p> <p>使用kubectl工具 【master节点操作】</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">mkdir</span> -p <span class="token environment constant">$HOME</span>/.kube
+<span class="token function">sudo</span> <span class="token function">cp</span> -i /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
+<span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -u<span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -g<span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>执行完成后，我们使用下面命令，查看我们正在运行的节点</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl get nodes
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/devops/container/k8s-1.html" class="prev">
+        Kubenetes简介
+      </a></span> <span class="next"><a href="/blog/devops/log/elk.html">
+        ELK
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/blog/assets/js/app.cafd4473.js" defer></script><script src="/blog/assets/js/2.65bdda9c.js" defer></script><script src="/blog/assets/js/3.60f79537.js" defer></script><script src="/blog/assets/js/32.080d7dcd.js" defer></script>
+  </body>
+</html>

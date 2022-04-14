@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>原型模式 | Tang&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/TB5.PNG">
+    <meta name="description" content="This is a blog.">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.5ceb092e.css" as="style"><link rel="preload" href="/blog/assets/js/app.cafd4473.js" as="script"><link rel="preload" href="/blog/assets/js/2.65bdda9c.js" as="script"><link rel="preload" href="/blog/assets/js/3.60f79537.js" as="script"><link rel="preload" href="/blog/assets/js/49.0f282ebb.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1c938e06.js"><link rel="prefetch" href="/blog/assets/js/11.7fb9f69d.js"><link rel="prefetch" href="/blog/assets/js/12.000fdb90.js"><link rel="prefetch" href="/blog/assets/js/13.d6b3912f.js"><link rel="prefetch" href="/blog/assets/js/14.bd0b677f.js"><link rel="prefetch" href="/blog/assets/js/15.bb62a25a.js"><link rel="prefetch" href="/blog/assets/js/16.fcab652a.js"><link rel="prefetch" href="/blog/assets/js/17.eb6777e7.js"><link rel="prefetch" href="/blog/assets/js/18.bd110a69.js"><link rel="prefetch" href="/blog/assets/js/19.f28a07eb.js"><link rel="prefetch" href="/blog/assets/js/20.73fb64f8.js"><link rel="prefetch" href="/blog/assets/js/21.21912a29.js"><link rel="prefetch" href="/blog/assets/js/22.66e1cd10.js"><link rel="prefetch" href="/blog/assets/js/23.169109be.js"><link rel="prefetch" href="/blog/assets/js/24.85fd3173.js"><link rel="prefetch" href="/blog/assets/js/25.abde29b9.js"><link rel="prefetch" href="/blog/assets/js/26.5adf5500.js"><link rel="prefetch" href="/blog/assets/js/27.a352b9b3.js"><link rel="prefetch" href="/blog/assets/js/28.890e1562.js"><link rel="prefetch" href="/blog/assets/js/29.098a45da.js"><link rel="prefetch" href="/blog/assets/js/30.6c4e80d8.js"><link rel="prefetch" href="/blog/assets/js/31.aba9f35a.js"><link rel="prefetch" href="/blog/assets/js/32.080d7dcd.js"><link rel="prefetch" href="/blog/assets/js/33.1cd96a20.js"><link rel="prefetch" href="/blog/assets/js/34.63d11f6c.js"><link rel="prefetch" href="/blog/assets/js/35.8b717c8c.js"><link rel="prefetch" href="/blog/assets/js/36.841dbd72.js"><link rel="prefetch" href="/blog/assets/js/37.31ada565.js"><link rel="prefetch" href="/blog/assets/js/38.e47f8a58.js"><link rel="prefetch" href="/blog/assets/js/39.bb4277b2.js"><link rel="prefetch" href="/blog/assets/js/4.980c0595.js"><link rel="prefetch" href="/blog/assets/js/40.009fa03c.js"><link rel="prefetch" href="/blog/assets/js/41.86ad0634.js"><link rel="prefetch" href="/blog/assets/js/42.459ea465.js"><link rel="prefetch" href="/blog/assets/js/43.ff8f6e4e.js"><link rel="prefetch" href="/blog/assets/js/44.2c8a87ea.js"><link rel="prefetch" href="/blog/assets/js/45.5d600a49.js"><link rel="prefetch" href="/blog/assets/js/46.5233525e.js"><link rel="prefetch" href="/blog/assets/js/47.6a9c0ca5.js"><link rel="prefetch" href="/blog/assets/js/48.6bca95a8.js"><link rel="prefetch" href="/blog/assets/js/5.0148824f.js"><link rel="prefetch" href="/blog/assets/js/50.d2afb1ca.js"><link rel="prefetch" href="/blog/assets/js/51.405967a9.js"><link rel="prefetch" href="/blog/assets/js/52.40bb6fb5.js"><link rel="prefetch" href="/blog/assets/js/53.e490feff.js"><link rel="prefetch" href="/blog/assets/js/54.1fe08786.js"><link rel="prefetch" href="/blog/assets/js/55.d1373695.js"><link rel="prefetch" href="/blog/assets/js/56.ea8f8384.js"><link rel="prefetch" href="/blog/assets/js/57.074ef80b.js"><link rel="prefetch" href="/blog/assets/js/58.159d5501.js"><link rel="prefetch" href="/blog/assets/js/59.c8364bd0.js"><link rel="prefetch" href="/blog/assets/js/6.564c6372.js"><link rel="prefetch" href="/blog/assets/js/60.f48bfafe.js"><link rel="prefetch" href="/blog/assets/js/61.56b23889.js"><link rel="prefetch" href="/blog/assets/js/62.44c453b9.js"><link rel="prefetch" href="/blog/assets/js/63.1378301b.js"><link rel="prefetch" href="/blog/assets/js/64.c3ef3a0c.js"><link rel="prefetch" href="/blog/assets/js/7.0a3d92c5.js"><link rel="prefetch" href="/blog/assets/js/8.483e8ba5.js"><link rel="prefetch" href="/blog/assets/js/9.7b4ce1b1.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.5ceb092e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/TB5.PNG" alt="Tang's Blog" class="logo"> <span class="site-name can-hide">Tang's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术笔记" class="dropdown-title"><span class="title">技术笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术笔记" class="mobile-dropdown-title"><span class="title">技术笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/java/" class="nav-link router-link-active">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/blog/frontend/" class="nav-link">
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/db/" class="nav-link">
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/microservice/" class="nav-link">
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/blog/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/bigdata/" class="nav-link">
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/devops/" class="nav-link">
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/blog/newlanguage/" class="nav-link">
+  新语言
+</a></li><li class="dropdown-item"><!----> <a href="/blog/othertool/" class="nav-link">
+  其他工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/readbook/" class="nav-link">
+  读书分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/guitar/" class="nav-link">
+  吉他谱
+</a></li><li class="dropdown-item"><!----> <a href="/blog/food/" class="nav-link">
+  饮食
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术笔记" class="dropdown-title"><span class="title">技术笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术笔记" class="mobile-dropdown-title"><span class="title">技术笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/java/" class="nav-link router-link-active">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/blog/frontend/" class="nav-link">
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/db/" class="nav-link">
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/microservice/" class="nav-link">
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/blog/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/bigdata/" class="nav-link">
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/devops/" class="nav-link">
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/blog/newlanguage/" class="nav-link">
+  新语言
+</a></li><li class="dropdown-item"><!----> <a href="/blog/othertool/" class="nav-link">
+  其他工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/readbook/" class="nav-link">
+  读书分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/guitar/" class="nav-link">
+  吉他谱
+</a></li><li class="dropdown-item"><!----> <a href="/blog/food/" class="nav-link">
+  饮食
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>新版本</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/java/designmode/" aria-current="page" class="sidebar-link">什么是设计模式</a></li><li><a href="/blog/java/designmode/singleton.html" class="sidebar-link">单例模式</a></li><li><a href="/blog/java/designmode/factory.html" class="sidebar-link">工厂模式</a></li><li><a href="/blog/java/designmode/buildermode.html" class="sidebar-link">建造者模式</a></li><li><a href="/blog/java/designmode/prototypemode.html" aria-current="page" class="active sidebar-link">原型模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/java/designmode/prototypemode.html#浅克隆" class="sidebar-link">浅克隆</a></li><li class="sidebar-sub-header"><a href="/blog/java/designmode/prototypemode.html#深克隆" class="sidebar-link">深克隆</a></li><li class="sidebar-sub-header"><a href="/blog/java/designmode/prototypemode.html#原型模式的优缺点" class="sidebar-link">原型模式的优缺点</a></li></ul></li><li><a href="/blog/java/designmode/adaptermode.html" class="sidebar-link">适配器模式</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>多线程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JUC</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JVM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Spring</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="原型模式"><a href="#原型模式" class="header-anchor">#</a> 原型模式</h1> <p>用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象。
+简单来说：crlt+c 、crlt+v</p> <h2 id="浅克隆"><a href="#浅克隆" class="header-anchor">#</a> 浅克隆</h2> <p>创建一个新对象，新对象的属性和原来对象完全相同，对于非基本类型属性，仍指向原有属性所指向的对象的内存地址。</p> <p><img src="/blog/designmode/lightcopy.PNG" alt="运行结果"></p> <p>1.实现Cloneable接口
+2.重写clone（）方法</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//Video.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">prototype<span class="token punctuation">.</span>demo1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/*
+    * 1.实现Cloneable接口
+    * 2.重写clone（）方法
+    *
+    * */</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Video</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token class-name">Date</span> createTime<span class="token punctuation">;</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> <span class="token class-name">Object</span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">CloneNotSupportedException</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Video</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Video</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">Date</span> createTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>createTime <span class="token operator">=</span> createTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Date</span> <span class="token function">getCreateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> createTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCreateTime</span><span class="token punctuation">(</span><span class="token class-name">Date</span> createTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>createTime <span class="token operator">=</span> createTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;Video{&quot;</span> <span class="token operator">+</span>
+                    <span class="token string">&quot;name='&quot;</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                    <span class="token string">&quot;, createTime=&quot;</span> <span class="token operator">+</span> createTime <span class="token operator">+</span>
+                    <span class="token string">'}'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//Test.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">prototype<span class="token punctuation">.</span>demo1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">CloneNotSupportedException</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Video</span> v1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Video</span><span class="token punctuation">(</span><span class="token string">&quot;老菊教你学java01&quot;</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v1:&quot;</span><span class="token operator">+</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v1 hash:&quot;</span><span class="token operator">+</span>v1<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token class-name">Video</span> v2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Video</span><span class="token punctuation">)</span> v1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v2:&quot;</span><span class="token operator">+</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v2 hash:&quot;</span><span class="token operator">+</span>v2<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>运行结果：</p> <p><img src="/blog/designmode/lightcopyresult.PNG" alt="运行结果"></p> <h2 id="深克隆"><a href="#深克隆" class="header-anchor">#</a> 深克隆</h2> <p>重写clone方法，将克隆对象的属性也进行克隆</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//Video.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">prototype<span class="token punctuation">.</span>demo02</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/*
+    * 1.实现Cloneable接口
+    * 2.重写clone（）方法
+    *
+    * */</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Video</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span> <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token class-name">Date</span> createTime<span class="token punctuation">;</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> <span class="token class-name">Object</span> <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">CloneNotSupportedException</span> <span class="token punctuation">{</span>
+
+            <span class="token class-name">Object</span> object <span class="token operator">=</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//将这个对象的属性也进行克隆</span>
+            <span class="token class-name">Video</span> v <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Video</span><span class="token punctuation">)</span> object<span class="token punctuation">;</span>
+            v<span class="token punctuation">.</span>createTime <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Date</span><span class="token punctuation">)</span> <span class="token keyword">this</span><span class="token punctuation">.</span>createTime<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> v<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Video</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Video</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">Date</span> createTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>createTime <span class="token operator">=</span> createTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token class-name">Date</span> <span class="token function">getCreateTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> createTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCreateTime</span><span class="token punctuation">(</span><span class="token class-name">Date</span> createTime<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>createTime <span class="token operator">=</span> createTime<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;Video{&quot;</span> <span class="token operator">+</span>
+                    <span class="token string">&quot;name='&quot;</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                    <span class="token string">&quot;, createTime=&quot;</span> <span class="token operator">+</span> createTime <span class="token operator">+</span>
+                    <span class="token string">'}'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//Test.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">prototype<span class="token punctuation">.</span>demo02</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Date</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">CloneNotSupportedException</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Date</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">Video</span> v1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Video</span><span class="token punctuation">(</span><span class="token string">&quot;老菊教你学java01&quot;</span><span class="token punctuation">,</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">Video</span> v2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Video</span><span class="token punctuation">)</span> v1<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v1:&quot;</span><span class="token operator">+</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v2:&quot;</span><span class="token operator">+</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;-------------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            date<span class="token punctuation">.</span><span class="token function">setTime</span><span class="token punctuation">(</span><span class="token number">123423512</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v1:&quot;</span><span class="token operator">+</span>v1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;v2:&quot;</span><span class="token operator">+</span>v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>运行结果：</p> <p><img src="/blog/designmode/deepcopyresult.PNG" alt="运行结果"></p> <p>可以看出，此时改变date，而克隆出来的v2的date并没有发生改变。这就是深克隆</p> <p><img src="/blog/designmode/deepcopy.PNG" alt="运行结果"></p> <h2 id="原型模式的优缺点"><a href="#原型模式的优缺点" class="header-anchor">#</a> 原型模式的优缺点</h2> <ul><li><p>优点</p> <ul><li>Java 自带的原型模式基于内存二进制流的复制，在性能上比直接 new 一个对象更加优良。</li> <li>可以使用深克隆方式保存对象的状态，使用原型模式将对象复制一份，并将其状态保存起来，简化了创建对象的过程，以便在需要的时候使用（例如恢复到历史某一状态），可辅助实现撤销操作。</li></ul></li> <li><p>缺点</p> <ul><li>需要为每一个类都配置一个 clone 方法</li> <li>clone 方法位于类的内部，当对已有类进行改造的时候，需要修改代码，违背了开闭原则。</li> <li>当实现深克隆时，需要编写较为复杂的代码，而且当对象之间存在多重嵌套引用时，为了实现深克隆，每一层对象对应的类都必须支持深克隆，实现起来会比较麻烦。因此，深克隆、浅克隆需要运用得当。</li></ul></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/java/designmode/buildermode.html" class="prev">
+        建造者模式
+      </a></span> <span class="next"><a href="/blog/java/designmode/adaptermode.html">
+        适配器模式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/blog/assets/js/app.cafd4473.js" defer></script><script src="/blog/assets/js/2.65bdda9c.js" defer></script><script src="/blog/assets/js/3.60f79537.js" defer></script><script src="/blog/assets/js/49.0f282ebb.js" defer></script>
+  </body>
+</html>

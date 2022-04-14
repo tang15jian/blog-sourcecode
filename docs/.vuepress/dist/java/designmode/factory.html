@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>工厂模式 | Tang&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/blog/TB5.PNG">
+    <meta name="description" content="This is a blog.">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.5ceb092e.css" as="style"><link rel="preload" href="/blog/assets/js/app.cafd4473.js" as="script"><link rel="preload" href="/blog/assets/js/2.65bdda9c.js" as="script"><link rel="preload" href="/blog/assets/js/3.60f79537.js" as="script"><link rel="preload" href="/blog/assets/js/48.6bca95a8.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.1c938e06.js"><link rel="prefetch" href="/blog/assets/js/11.7fb9f69d.js"><link rel="prefetch" href="/blog/assets/js/12.000fdb90.js"><link rel="prefetch" href="/blog/assets/js/13.d6b3912f.js"><link rel="prefetch" href="/blog/assets/js/14.bd0b677f.js"><link rel="prefetch" href="/blog/assets/js/15.bb62a25a.js"><link rel="prefetch" href="/blog/assets/js/16.fcab652a.js"><link rel="prefetch" href="/blog/assets/js/17.eb6777e7.js"><link rel="prefetch" href="/blog/assets/js/18.bd110a69.js"><link rel="prefetch" href="/blog/assets/js/19.f28a07eb.js"><link rel="prefetch" href="/blog/assets/js/20.73fb64f8.js"><link rel="prefetch" href="/blog/assets/js/21.21912a29.js"><link rel="prefetch" href="/blog/assets/js/22.66e1cd10.js"><link rel="prefetch" href="/blog/assets/js/23.169109be.js"><link rel="prefetch" href="/blog/assets/js/24.85fd3173.js"><link rel="prefetch" href="/blog/assets/js/25.abde29b9.js"><link rel="prefetch" href="/blog/assets/js/26.5adf5500.js"><link rel="prefetch" href="/blog/assets/js/27.a352b9b3.js"><link rel="prefetch" href="/blog/assets/js/28.890e1562.js"><link rel="prefetch" href="/blog/assets/js/29.098a45da.js"><link rel="prefetch" href="/blog/assets/js/30.6c4e80d8.js"><link rel="prefetch" href="/blog/assets/js/31.aba9f35a.js"><link rel="prefetch" href="/blog/assets/js/32.080d7dcd.js"><link rel="prefetch" href="/blog/assets/js/33.1cd96a20.js"><link rel="prefetch" href="/blog/assets/js/34.63d11f6c.js"><link rel="prefetch" href="/blog/assets/js/35.8b717c8c.js"><link rel="prefetch" href="/blog/assets/js/36.841dbd72.js"><link rel="prefetch" href="/blog/assets/js/37.31ada565.js"><link rel="prefetch" href="/blog/assets/js/38.e47f8a58.js"><link rel="prefetch" href="/blog/assets/js/39.bb4277b2.js"><link rel="prefetch" href="/blog/assets/js/4.980c0595.js"><link rel="prefetch" href="/blog/assets/js/40.009fa03c.js"><link rel="prefetch" href="/blog/assets/js/41.86ad0634.js"><link rel="prefetch" href="/blog/assets/js/42.459ea465.js"><link rel="prefetch" href="/blog/assets/js/43.ff8f6e4e.js"><link rel="prefetch" href="/blog/assets/js/44.2c8a87ea.js"><link rel="prefetch" href="/blog/assets/js/45.5d600a49.js"><link rel="prefetch" href="/blog/assets/js/46.5233525e.js"><link rel="prefetch" href="/blog/assets/js/47.6a9c0ca5.js"><link rel="prefetch" href="/blog/assets/js/49.0f282ebb.js"><link rel="prefetch" href="/blog/assets/js/5.0148824f.js"><link rel="prefetch" href="/blog/assets/js/50.d2afb1ca.js"><link rel="prefetch" href="/blog/assets/js/51.405967a9.js"><link rel="prefetch" href="/blog/assets/js/52.40bb6fb5.js"><link rel="prefetch" href="/blog/assets/js/53.e490feff.js"><link rel="prefetch" href="/blog/assets/js/54.1fe08786.js"><link rel="prefetch" href="/blog/assets/js/55.d1373695.js"><link rel="prefetch" href="/blog/assets/js/56.ea8f8384.js"><link rel="prefetch" href="/blog/assets/js/57.074ef80b.js"><link rel="prefetch" href="/blog/assets/js/58.159d5501.js"><link rel="prefetch" href="/blog/assets/js/59.c8364bd0.js"><link rel="prefetch" href="/blog/assets/js/6.564c6372.js"><link rel="prefetch" href="/blog/assets/js/60.f48bfafe.js"><link rel="prefetch" href="/blog/assets/js/61.56b23889.js"><link rel="prefetch" href="/blog/assets/js/62.44c453b9.js"><link rel="prefetch" href="/blog/assets/js/63.1378301b.js"><link rel="prefetch" href="/blog/assets/js/64.c3ef3a0c.js"><link rel="prefetch" href="/blog/assets/js/7.0a3d92c5.js"><link rel="prefetch" href="/blog/assets/js/8.483e8ba5.js"><link rel="prefetch" href="/blog/assets/js/9.7b4ce1b1.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.5ceb092e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/TB5.PNG" alt="Tang's Blog" class="logo"> <span class="site-name can-hide">Tang's Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术笔记" class="dropdown-title"><span class="title">技术笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术笔记" class="mobile-dropdown-title"><span class="title">技术笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/java/" class="nav-link router-link-active">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/blog/frontend/" class="nav-link">
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/db/" class="nav-link">
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/microservice/" class="nav-link">
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/blog/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/bigdata/" class="nav-link">
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/devops/" class="nav-link">
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/blog/newlanguage/" class="nav-link">
+  新语言
+</a></li><li class="dropdown-item"><!----> <a href="/blog/othertool/" class="nav-link">
+  其他工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/readbook/" class="nav-link">
+  读书分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/guitar/" class="nav-link">
+  吉他谱
+</a></li><li class="dropdown-item"><!----> <a href="/blog/food/" class="nav-link">
+  饮食
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术笔记" class="dropdown-title"><span class="title">技术笔记</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术笔记" class="mobile-dropdown-title"><span class="title">技术笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/java/" class="nav-link router-link-active">
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/blog/frontend/" class="nav-link">
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/blog/db/" class="nav-link">
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/blog/microservice/" class="nav-link">
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/blog/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/blog/bigdata/" class="nav-link">
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/blog/devops/" class="nav-link">
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/blog/newlanguage/" class="nav-link">
+  新语言
+</a></li><li class="dropdown-item"><!----> <a href="/blog/othertool/" class="nav-link">
+  其他工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/blog/readbook/" class="nav-link">
+  读书分享
+</a></li><li class="dropdown-item"><!----> <a href="/blog/guitar/" class="nav-link">
+  吉他谱
+</a></li><li class="dropdown-item"><!----> <a href="/blog/food/" class="nav-link">
+  饮食
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>新版本</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/java/designmode/" aria-current="page" class="sidebar-link">什么是设计模式</a></li><li><a href="/blog/java/designmode/singleton.html" class="sidebar-link">单例模式</a></li><li><a href="/blog/java/designmode/factory.html" aria-current="page" class="active sidebar-link">工厂模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/java/designmode/factory.html#简单工厂模式" class="sidebar-link">简单工厂模式</a></li><li class="sidebar-sub-header"><a href="/blog/java/designmode/factory.html#工厂方法模式" class="sidebar-link">工厂方法模式</a></li><li class="sidebar-sub-header"><a href="/blog/java/designmode/factory.html#抽象工厂模式" class="sidebar-link">抽象工厂模式</a></li></ul></li><li><a href="/blog/java/designmode/buildermode.html" class="sidebar-link">建造者模式</a></li><li><a href="/blog/java/designmode/prototypemode.html" class="sidebar-link">原型模式</a></li><li><a href="/blog/java/designmode/adaptermode.html" class="sidebar-link">适配器模式</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>多线程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JUC</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JVM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Spring</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="工厂模式"><a href="#工厂模式" class="header-anchor">#</a> 工厂模式</h1> <p>实现了创建者和调用者的解耦</p> <ul><li><p>简单工厂模式 （虽然某种程度上不符合设计原则，但实际使用最多）</p></li> <li><p>工厂方法模式 （不修改已有类的前提下，通过增加新的工厂类实现扩展）</p></li> <li><p>抽象工厂模式 （不可以增加产品，可以增加产品簇）</p></li></ul> <h2 id="简单工厂模式"><a href="#简单工厂模式" class="header-anchor">#</a> 简单工厂模式</h2> <p>又叫做静态工厂方法（Static Factory Method）模式，根据参数的不同返回不同类的实例</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Car.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>simple</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
+        <span class="token keyword">void</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Tesla.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>simple</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Tesla</span> <span class="token keyword">implements</span> <span class="token class-name">Car</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;特斯拉&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Wuling.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>simple</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WuLing</span> <span class="token keyword">implements</span> <span class="token class-name">Car</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;五菱&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>CarFactory负责汽车的生产（new xxx），不用自己去new对象</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//CarFactory.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>simple</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CarFactory</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Car</span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token class-name">String</span> car<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">&quot;五菱&quot;</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>car<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WuLing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">&quot;特斯拉&quot;</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>car<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Tesla</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Consumer.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>simple</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Consumer</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//        Car car1 = new WuLing();</span>
+    <span class="token comment">//        Car car2 = new Tesla();</span>
+
+            <span class="token class-name">Car</span> car1 <span class="token operator">=</span> <span class="token class-name">CarFactory</span><span class="token punctuation">.</span><span class="token function">getCar</span><span class="token punctuation">(</span><span class="token string">&quot;五菱&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">Car</span> car2 <span class="token operator">=</span> <span class="token class-name">CarFactory</span><span class="token punctuation">.</span><span class="token function">getCar</span><span class="token punctuation">(</span><span class="token string">&quot;特斯拉&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            car1<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            car2<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>简单工厂模式扩展性不好，当存在一种新的车型时，需要扩展CarFactory类，和OOP设计原则（开闭原则：对扩展开放，对修改关闭） 不符。</p> <h2 id="工厂方法模式"><a href="#工厂方法模式" class="header-anchor">#</a> 工厂方法模式</h2> <p>工厂方法模式是对简单工厂模式的进一步抽象化，其好处是可以使系统在<strong>不修改原来代码</strong>的情况下引进新的产品，即满足开闭原则。</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Car.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
+        <span class="token keyword">void</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Tesla.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Tesla</span> <span class="token keyword">implements</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;特斯拉&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//WuLing.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WuLing</span> <span class="token keyword">implements</span> <span class="token class-name">Car</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;五菱&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>使用接口CarFactory来将工厂抽象出来，便于扩展</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//CarFactory.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CarFactory</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Car</span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//TeslaFactory.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TeslaFactory</span> <span class="token keyword">implements</span> <span class="token class-name">CarFactory</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">Car</span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Tesla</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//WuLingFactory.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WuLingFactory</span> <span class="token keyword">implements</span> <span class="token class-name">CarFactory</span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">Car</span> <span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">WuLing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Consumer.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Consumer</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">Car</span> car1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WuLingFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">Car</span> car2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TeslaFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            car1<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            car2<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>优点：
+<ul><li>用户只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程。</li> <li>灵活性增强，对于新产品的创建，只需多写一个相应的工厂类。</li> <li>典型的解耦框架。高层模块只需要知道产品的抽象类，无须关心其他实现类，满足迪米特法则、依赖倒置原则和里氏替换原则。</li></ul></li> <li>缺点：
+<ul><li>类的个数容易过多，增加复杂度</li> <li>抽象产品只能生产一种产品，此弊端可使用抽象工厂模式解决。</li></ul></li></ul> <h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="header-anchor">#</a> 抽象工厂模式</h2> <p>工厂的工厂，围绕一个超级工厂创建其他工厂。</p> <p><img src="/blog/designmode/abstractFactory.PNG" alt="抽象工厂"></p> <p>超级工厂，定义产品簇</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//ProductFactory.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//抽象产品工厂</span>
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ProductFactory</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">//生产手机</span>
+        <span class="token class-name">PhoneProduct</span> <span class="token function">phoneProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//生产路由器</span>
+        <span class="token class-name">RouterProduct</span> <span class="token function">routerProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>手机产品接口</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//PhoneProduct.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">PhoneProduct</span> <span class="token punctuation">{</span>
+        <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">void</span> <span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">void</span> <span class="token function">callup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">void</span> <span class="token function">sendSMS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>路由器产品接口</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//RouterProduct.java</span>
+   <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">RouterProduct</span> <span class="token punctuation">{</span>
+        <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">void</span> <span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">void</span> <span class="token function">openWifi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">void</span> <span class="token function">setting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>华为手机实现类</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//HuaweiPhone.java</span>
+   <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HuaweiPhone</span> <span class="token keyword">implements</span> <span class="token class-name">PhoneProduct</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;开启华为手机&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;关闭华为手机&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">callup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;华为打电话&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendSMS</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;华为发短信&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>小米手机实现类</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//XiaomiPhone.java</span>
+   <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XiaomiPhone</span> <span class="token keyword">implements</span> <span class="token class-name">PhoneProduct</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;开启小米手机&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;关闭小米手机&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">callup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;小米打电话&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sendSMS</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;小米发短信&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>华为路由器实现类</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//HuaweiRouter.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HuaweiRouter</span> <span class="token keyword">implements</span> <span class="token class-name">RouterProduct</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;启动华为路由器&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;关闭华为路由器&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">openWifi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;打开华为Wifi&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;华为路由器设置&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p>小米路由器实现类</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//XiaomiRouter.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XiaomiRouter</span> <span class="token keyword">implements</span> <span class="token class-name">RouterProduct</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;启动小米路由器&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;关闭小米路由器&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">openWifi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;打开小米Wifi&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;小米路由器设置&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><p>华为工厂</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//HuaweiFactory.java</span>
+   <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HuaweiFactory</span> <span class="token keyword">implements</span> <span class="token class-name">ProductFactory</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">PhoneProduct</span> <span class="token function">phoneProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">HuaweiPhone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">RouterProduct</span> <span class="token function">routerProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">HuaweiRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>小米工厂</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//XiaomiFactory.java</span>
+    <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XiaomiFactory</span> <span class="token keyword">implements</span> <span class="token class-name">ProductFactory</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">PhoneProduct</span> <span class="token function">phoneProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">XiaomiPhone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token class-name">RouterProduct</span> <span class="token function">routerProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">XiaomiRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>用户</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>    <span class="token comment">//Client.java</span>
+   <span class="token keyword">package</span> <span class="token namespace">factory<span class="token punctuation">.</span>abstract1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;===========小米系列产品============&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//小米产品</span>
+            <span class="token class-name">XiaomiFactory</span> xiaomiFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XiaomiFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">PhoneProduct</span> phoneProduct <span class="token operator">=</span> xiaomiFactory<span class="token punctuation">.</span><span class="token function">phoneProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            phoneProduct<span class="token punctuation">.</span><span class="token function">callup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            phoneProduct<span class="token punctuation">.</span><span class="token function">sendSMS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token class-name">RouterProduct</span> routerProduct <span class="token operator">=</span> xiaomiFactory<span class="token punctuation">.</span><span class="token function">routerProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            routerProduct<span class="token punctuation">.</span><span class="token function">openWifi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;===========华为系列产品============&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//华为产品</span>
+            <span class="token class-name">HuaweiFactory</span> huaweiFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HuaweiFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            phoneProduct <span class="token operator">=</span> huaweiFactory<span class="token punctuation">.</span><span class="token function">phoneProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            phoneProduct<span class="token punctuation">.</span><span class="token function">callup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            phoneProduct<span class="token punctuation">.</span><span class="token function">sendSMS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            routerProduct <span class="token operator">=</span> huaweiFactory<span class="token punctuation">.</span><span class="token function">routerProduct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            routerProduct<span class="token punctuation">.</span><span class="token function">openWifi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><ul><li><p>优点</p> <ul><li>具体产品再应用层的代码隔离，无需关心创建的细节</li> <li>将一个系列的产品统一到一起创建。</li></ul></li> <li><p>缺点</p> <ul><li>规定了所有可能被创建的产品集合，产品簇中扩展新的产品困难；</li> <li>增加了系统的抽象性和理解难度</li></ul></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/java/designmode/singleton.html" class="prev">
+        单例模式
+      </a></span> <span class="next"><a href="/blog/java/designmode/buildermode.html">
+        建造者模式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/blog/assets/js/app.cafd4473.js" defer></script><script src="/blog/assets/js/2.65bdda9c.js" defer></script><script src="/blog/assets/js/3.60f79537.js" defer></script><script src="/blog/assets/js/48.6bca95a8.js" defer></script>
+  </body>
+</html>
