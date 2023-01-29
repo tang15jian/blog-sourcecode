@@ -24,8 +24,11 @@ module.exports = [
             ]},
             // '/devops/container/docker2',
             {title:'Kubenetes',collapsable: true,children:[
-                '/devops/container/k8s-1',
-                '/devops/container/k8s-2'
+                '/devops/container/k8s/k8s-1',
+                '/devops/container/k8s/k8s-2',
+                '/devops/container/k8s/k8s-3',
+                '/devops/container/k8s/k8s-4',
+                '/devops/container/k8s/k8s-5'
             ]},
         ]
     },
