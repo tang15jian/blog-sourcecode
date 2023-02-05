@@ -3,7 +3,7 @@ module.exports = {
   description: "This is a blog.",
   base: '/blog/',
   markdown: {
-    lineNumbers: true, // 代码行号
+    lineNumbers: false, // 代码行号
   },
   
   head:[['link', { rel: 'icon', href: '/TB5.PNG' }]],

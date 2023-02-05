@@ -119,10 +119,10 @@ a.sidebar-link
   transition 0.5s ease-in-out
   &:hover
     color $accentColor
-    transform scale(1.05)
   &.active
     font-weight 600
     color $accentColor
+    background-color #3eaf7c26
     border-left-color $accentColor
   .sidebar-group &
     padding-left 3rem
@@ -141,4 +141,6 @@ a.sidebar-link
         a.sidebar-link
           font-size: .8rem
           color: #aaaaab
+          &:hover
+            color $accentColor
 </style>
