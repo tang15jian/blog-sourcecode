@@ -11,6 +11,7 @@ module.exports = [
             {text:'DevOps',link:'/devops/'},
             {text:'新语言',link:'/newlanguage/'},
             {text:'其他工具',link:'/othertool/'},
+            {text:'Leetcode',link:'/leetcode/'},
         ]
     },
     {

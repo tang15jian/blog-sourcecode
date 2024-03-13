@@ -1,7 +1,7 @@
 module.exports = [
     {
         title: '新版本',
-        collapsable: true,
+        collapsable: false,
         children: [
             '/java/newfeature/',
             '/java/newfeature/java8',
@@ -9,7 +9,7 @@ module.exports = [
     },
     {
         title: '设计模式',
-        collapsable: true,
+        collapsable: false,
         children: [
             '/java/designmode/',
             '/java/designmode/singleton',
@@ -21,36 +21,33 @@ module.exports = [
     },
     {
         title: '多线程',
-        collapsable: true,
+        collapsable: false,
         children: [
-            '/java/multithread/',
+            '/java/multithread/mul1',
         ]
     },
     {
         title: 'JUC',
-        collapsable: true,
+        collapsable: false,
         children: [
             '/java/juc/',
         ]
     },
     {
         title: 'JVM',
-        collapsable: true,
+        collapsable: false,
         children: [
             '/java/jvm/',
         ]
     },
     {
         title: 'Spring',
-        collapsable: true,
+        collapsable: false,
         children: [
-            {
-                title: 'Spring', 
-                collapsable: true, 
-                children:[
-                    '/java/spring/spring/AOP1',
-                ]
-            },
+            '/java/spring/spring/IOC',
+            '/java/spring/spring/AOP1',
+            '/java/spring/spring/springmvc1',
+            '/java/spring/spring/springboot1'
         ]
     },
 

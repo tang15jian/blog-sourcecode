@@ -108,7 +108,7 @@ function renderExternal (h, to, text) {
 
 a.sidebar-link
   font-size 1em
-  font-weight 500
+  font-weight 600
   display inline-block
   color $textColor
   border-left 0.25rem solid transparent

@@ -76,10 +76,36 @@ java --- jar (环境) --- 打包项目带上环境（镜像）--- （Docker仓�
 Docker是内核级别的虚拟化，可以在一个物理机上运行很多的容器实例，服务器的性能被压榨到极致。
 
 
+## 安装Docker
+
+
+### 安装 yum 工具
+
+首先需要大家虚拟机联网，安装yum工具
+
+```
+yum install -y yum-utils \
+           device-mapper-persistent-data \
+           lvm2 --skip-broken
+```
+
+### 更新本地镜像源
+
+```
+# 设置docker镜像源
+yum-config-manager \
+    --add-repo \
+    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+```
+
+### 安装Docker
+
+```
+yum install -y docker-ce
+```
+
 
 ##	Docker 命令
-
-
 
 ###	帮助命令
 
@@ -127,11 +153,24 @@ exit		  从容器中退出主机,
 -p 			  端口映射
 ```
 
+准备Mysql数据存放目录：/home/tj/mysql
+
+执行指令启动Mysql
+
+```bash
+docker run -p 3306:3306 --name mysql -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7
+
+-p 3306:3306：将容器的 3306 端口映射到主机的 3306 端口。
+-v -v $PWD/conf:/etc/mysql/conf.d：将主机当前目录下的 conf/my.cnf 挂载到容器的 /etc/mysql/my.cnf。
+-v $PWD/logs:/logs：将主机当前目录下的 logs 目录挂载到容器的 /logs。
+-v $PWD/data:/var/lib/mysql ：将主机当前目录下的data目录挂载到容器的 /var/lib/mysql 。
+-e MYSQL_ROOT_PASSWORD=123456：初始化 root 用户的密码。
+
+```
+
 **端口映射：**
 
 ![network](/blog/devops/dockernet.PNG)
-
-
 
 
 **列出所有容器**
@@ -326,6 +365,7 @@ docker run -it -v 主机目录：容器内目录
 
 ```shell
 docker run -d -p 3306:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --privileged=true --name mysql01 mysql:5.7
+
 
 # -d 后台运行
 # -p 端口映射

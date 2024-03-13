@@ -40,6 +40,6 @@ features:
     actionLink: /blog/newlanguage/
   - title: Others
     details: 操作系统 / Swagger / PostMan / Git / Ngrok
-    actionLink: /blog/othertool/
+    actionLink: /blog/other/
 footer: MIT Licensed | Copyright © 2020-present Chris Tang
 ---

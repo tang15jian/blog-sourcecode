@@ -1,0 +1,37 @@
+module.exports = [
+    {
+        title: 'Go Lang',
+        collapsable: false,
+        children:[
+            '/newlanguage/go/go1/go1',
+            '/newlanguage/go/go1/go2',
+            '/newlanguage/go/go1/go3',
+            '/newlanguage/go/go1/go4',
+            '/newlanguage/go/go1/go5',
+            '/newlanguage/go/go1/go6',
+            '/newlanguage/go/go2/go2-3',
+            '/newlanguage/go/go1/go7',
+            '/newlanguage/go/go1/go8',
+            '/newlanguage/go/go1/go9',
+            '/newlanguage/go/go1/go10',
+            '/newlanguage/go/go2/go2-1',
+            '/newlanguage/go/go2/go2-2',
+            '/newlanguage/go/go2/go2-3',
+            '/newlanguage/go/go2/go2-4',
+            '/newlanguage/go/go2/go2-5',
+            '/newlanguage/go/go2/go2-6',
+            '/newlanguage/go/go2/go2-7',
+            '/newlanguage/go/go2/go2-8',
+            '/newlanguage/go/go2/go2-9',
+            '/newlanguage/go/go2/go2-10',
+            '/newlanguage/go/go2/go2-11',
+            '/newlanguage/go/go2/go2-12',
+            '/newlanguage/go/go2/go2-13',
+            '/newlanguage/go/go2/go2-14',
+            '/newlanguage/go/go3/go3-1',
+            '/newlanguage/go/go3/go3-2',
+            '/newlanguage/go/go3/go3-3',
+            '/newlanguage/go/go3/go3-4',
+        ]
+    }
+]
